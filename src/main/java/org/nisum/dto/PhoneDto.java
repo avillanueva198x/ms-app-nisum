@@ -6,7 +6,7 @@ import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
 @Data
-@ApiModel
+@ApiModel(description = "Bean Phone")
 public class PhoneDto implements Serializable {
 	private static final long serialVersionUID = 1L;
 

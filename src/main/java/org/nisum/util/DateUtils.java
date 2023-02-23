@@ -23,7 +23,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	private static final String DATE_TEMPLATE = "yyyy-MM-dd";
 	private static final String FORMATE_DATE_CUSTOM = "EEEE, dd MMMM";
 	private static final String DATETIME_TEMPLATE = "yyyy-MM-dd HH:mm:ss";
-	private static final SimpleDateFormat dateFormat = new SimpleDateFormat(TIME_TEMPLATE);
+	private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat(TIME_TEMPLATE);
 
 	public static Date parseDate(String source, String pattern) {
 		DateFormat dateFormat = new SimpleDateFormat(pattern);
@@ -95,7 +95,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	}
 
 	public static LocalTime getLocalTimeFromDate(Date startHour) {
-		return LocalTime.parse(dateFormat.format(startHour), DateTimeFormatter.ofPattern(TIME_TEMPLATE));
+		return LocalTime.parse(DATE_FORMAT.format(startHour), DateTimeFormatter.ofPattern(TIME_TEMPLATE));
 	}
 
 	public static String getLocalDateTimeNow() {

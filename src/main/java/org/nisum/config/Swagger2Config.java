@@ -5,6 +5,7 @@ import static springfox.documentation.builders.PathSelectors.regex;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.nisum.util.Constant;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.hateoas.client.LinkDiscoverer;
@@ -35,11 +36,11 @@ public class Swagger2Config {
 
 	private ApiInfo apiInfo() {
 		return new ApiInfoBuilder()
-				.title("REST services")
-				.description("Documentation and client for all REST API services")
+				.title("API REST Full services")
+				.description("Documentation for all REST Full API services")
 				.termsOfServiceUrl("Terms of service")
-				.license("NISUM")
-				.version("1.0")
+				.license(Constant.APP)
+				.version(Constant.VERSION)
 				.build();
 	}
 

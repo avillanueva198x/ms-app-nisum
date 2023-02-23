@@ -24,6 +24,7 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
+import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import reactor.core.publisher.Mono;
 import reactor.core.scheduler.Schedulers;
@@ -38,13 +39,10 @@ import reactor.core.scheduler.Schedulers;
 @RequestMapping(value = "/api", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_STREAM_JSON_VALUE)
 @Api(value = "Api evaluación java", produces = "application/json", description = "Controlador para crear usuarios")
 @Slf4j
-public class NisumRest {
+@AllArgsConstructor
+public class UsersController {
 
 	private NisumServiceFacade nisumServiceFacade;
-
-	public NisumRest(NisumServiceFacade leadServiceFacade) {
-		this.nisumServiceFacade = leadServiceFacade;
-	}
 
 	@CrossOrigin("*")
 	@ApiOperation(value = "Crear usuarios")
@@ -79,5 +77,6 @@ public class NisumRest {
 				.doOnSuccess(r -> log.info(" [END] endpoint /api/getUserById Time: " + (System.currentTimeMillis() - init)))
 				.subscribeOn(Schedulers.parallel());
 	}
+
 
 }

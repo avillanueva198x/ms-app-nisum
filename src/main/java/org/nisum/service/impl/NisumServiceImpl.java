@@ -63,10 +63,9 @@ public class NisumServiceImpl implements NisumService {
 				phone.setIdUser(user.getId());
 				phoneRepository.save(phone);
 			}
-			log.debug("[ createUserReactive ]");
 		} catch (Exception e) {
 			e.printStackTrace();
-			log.info(" Error createUserReactive " + e.getMessage());
+			log.info(" Error createUserReactive ", e.getMessage());
 			return new ResponseEntity<>(new GenericErrorResponse(e.getCause().getMessage()), HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 
