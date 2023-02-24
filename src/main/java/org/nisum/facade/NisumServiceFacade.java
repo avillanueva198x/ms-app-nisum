@@ -25,18 +25,32 @@ public class NisumServiceFacade {
 		this.nisumService = leadService;
 	}
 
-	public Mono<?> createUserReactive(UserRequest leadDto) {
+	public Mono<?> createUserReactive(String authorization, UserRequest leadDto) {
 		log.debug("[INI] createUserReactive facade");
 		long init = System.currentTimeMillis();
-		return Mono.defer(() -> Mono.just(nisumService.createUserReactive(leadDto)))
-				.doOnSuccess(r -> log.debug("[END] createUserReactive facade " + (System.currentTimeMillis() - init)));
+		return Mono.defer(() -> Mono.just(nisumService.createUserReactive(authorization.split(" ")[1], leadDto)))
+				.doOnSuccess(r -> log.debug("[END] createUserReactive facade : {}", (System.currentTimeMillis() - init)));
 	}
 
 	public Mono<?> getUserById(Long id) {
 		log.debug("[INI] getUserById facade");
 		long init = System.currentTimeMillis();
 		return Mono.defer(() -> Mono.just(nisumService.getUserById(id)))
-				.doOnSuccess(r -> log.debug("[END] getUserById facade " + (System.currentTimeMillis() - init)));
+				.doOnSuccess(r -> log.debug("[END] getUserById facade : {}", (System.currentTimeMillis() - init)));
+	}
+
+	public Mono<?> deleteUser(Long id) {
+		log.debug("[INI] deleteUser facade");
+		long init = System.currentTimeMillis();
+		return Mono.defer(() -> Mono.just(nisumService.deleteUser(id)))
+				.doOnSuccess(r -> log.debug("[END] deleteUser facade : {}", (System.currentTimeMillis() - init)));
+	}
+	
+	public Mono<?> getUserAll() {
+		log.debug("[INI] getUserAll facade");
+		long init = System.currentTimeMillis();
+		return Mono.defer(() -> Mono.just(nisumService.getUserAll()))
+				.doOnSuccess(r -> log.debug("[END] getUserAll facade : {}", (System.currentTimeMillis() - init)));
 	}
 	
 	public Mono<GenericErrorResponse> badRequest(Set<ConstraintViolation<UserRequest>> violations, UserRequest dto) {
@@ -45,8 +59,12 @@ public class NisumServiceFacade {
 			list.add(violation.getMessage());
 		}
 		String msgError = (StringUtils.join(list, ", "));
-		long init = System.currentTimeMillis();
-		return Mono.defer(() -> Mono.just(new GenericErrorResponse(msgError)))
-				.doOnSuccess(r -> log.debug("[END] badRequest " + (System.currentTimeMillis() - init)));
+		return Mono.defer(() -> Mono.just(new GenericErrorResponse(msgError)));
 	}
+
+	public String helloWord() {
+		return "Hola";
+	}
+
+
 }

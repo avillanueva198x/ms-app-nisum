@@ -1,10 +1,8 @@
 package org.nisum.rest.response;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
@@ -14,20 +12,23 @@ import lombok.Data;
 public class CreateResponse implements Serializable {
 	private static final long serialVersionUID = 1L;
 
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private Long id;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date created;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date modified;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date lastLogin;
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	private String created;
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	private String modified;
+	@JsonIgnoreProperties(ignoreUnknown = true)
+	private String lastLogin;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String token;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private Boolean active;
 
 	@Override
 	public String toString() {
-		return "CreateResponse [id=" + id + ", created=" + created + ", modified=" + modified + ", lastLogin=" + lastLogin
-				+ ", token=" + token + ", active=" + active + "]";
+		return "CreateResponse [id=" + id + ", created=" + created + ", modified=" + modified + ", lastLogin="
+				+ lastLogin + ", token=" + token + ", active=" + active + "]";
 	}
 
 }

@@ -23,6 +23,7 @@
 		<commons-lang3.version>3.6</commons-lang3.version>
 		<confluent.version>5.2.2</confluent.version>
 		<slf4j-api.version>1.7.6</slf4j-api.version>
+    	<org.mapstruct.version>1.3.1.Final</org.mapstruct.version>
 	</properties>
 
 	<dependencies>
@@ -94,11 +95,11 @@
 			<artifactId>flyway-core</artifactId>
 		</dependency>
 
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-
+	    <dependency>
+	      <groupId>org.mapstruct</groupId>
+	      <artifactId>mapstruct</artifactId>
+	      <version>${org.mapstruct.version}</version>
+	    </dependency>
 		<dependency>
 			<groupId>javax.xml</groupId>
 			<artifactId>jaxrpc-api</artifactId>
@@ -211,6 +212,18 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+		          <source>1.8</source> <!-- depending on your project -->
+		          <target>1.8</target> <!-- depending on your project -->
+		          <annotationProcessorPaths>
+		            <path>
+		              <groupId>org.mapstruct</groupId>
+		              <artifactId>mapstruct-processor</artifactId>
+		              <version>${org.mapstruct.version}</version>
+		            </path>
+		            <!-- other annotation processors -->
+		          </annotationProcessorPaths>
+		        </configuration>
 			</plugin>
 		</plugins>
 	</build>

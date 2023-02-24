@@ -5,6 +5,8 @@ import java.util.List;
 
 import org.nisum.dto.PhoneDto;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
 
@@ -15,14 +17,23 @@ public class UserResponse implements Serializable {
 
 	private Long id;
 
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String name;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String email;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String password;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String token;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private Boolean active;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String lastLogin;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String created;
+	@JsonIgnoreProperties(ignoreUnknown = true)
 	private String modified;
+	@JsonIgnoreProperties(ignoreUnknown = true)
     private List<PhoneDto> phones;
     
 	@Override

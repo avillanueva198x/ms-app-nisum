@@ -5,8 +5,13 @@ import org.springframework.http.ResponseEntity;
 
 public interface NisumService {
 
-	ResponseEntity<?> createUserReactive(UserRequest leadDto);
+	ResponseEntity<?> createUserReactive(String authorization, UserRequest leadDto);
 
 	ResponseEntity<?> getUserById(Long id);
 
+	ResponseEntity<?> deleteUser(Long id);
+	
+	ResponseEntity<?> getUserAll();
+
+	
 }

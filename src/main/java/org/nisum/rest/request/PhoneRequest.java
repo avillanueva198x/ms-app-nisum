@@ -12,7 +12,7 @@ import lombok.Data;
 
 @Data
 @ApiModel
-public class PhoneRequest  implements Serializable{
+public class PhoneRequest implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@NotEmpty(message = "Número de teléfono necesario")
@@ -21,6 +21,19 @@ public class PhoneRequest  implements Serializable{
 	private String number;
 	private String citycode;
 	private String contrycode;
+
+	public PhoneRequest() {
+		super();
+	}
+
+	public PhoneRequest(
+			@NotEmpty(message = "Número de teléfono necesario") @Pattern(regexp = "^\\+?51\\d{9}$", message = "Número de teléfono inválido") String number,
+			String citycode, String contrycode) {
+		super();
+		this.number = number;
+		this.citycode = citycode;
+		this.contrycode = contrycode;
+	}
 
 	@Override
 	public String toString() {

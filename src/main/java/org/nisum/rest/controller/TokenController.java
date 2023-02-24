@@ -39,6 +39,8 @@ public class TokenController {
 	@ApiOperation(value = "Genera Token de acceso")
 	@PostMapping(value = "/token")
 	public ResponseEntity<?> login(@RequestBody CredentialsRequest credentials) {
+		long init = System.currentTimeMillis();
+		log.info(" [START] endpoint /api/token - CredentialsRequest:{}", credentials);
 		int existeUser = SecurityRepository.existUserPassword(credentials.getUsername(), credentials.getPassword());
 		if (existeUser == 0) {
 			return new ResponseEntity<>(new GenericErrorResponse("Credenciales Inválidas"), HttpStatus.NOT_FOUND);
@@ -47,6 +49,7 @@ public class TokenController {
 		UserDto user = new UserDto();
 		user.setUser(credentials.getUsername());
 		user.setToken(token);
+		log.info(" [END] endpoint /api/token Time: " + (System.currentTimeMillis() - init));
 		return new ResponseEntity<>(user, HttpStatus.OK);
 	}
 
