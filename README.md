@@ -36,7 +36,7 @@
 	
 # Descarga, Compilación y Ejecución del microservicio 
 
-*	Descargar las fuentes del GitHub de la ruta:
+*	Descargar las fuentes del GitHub:
 
 	https://github.com/avillanueva198x/ms-app-nisum.git
 
