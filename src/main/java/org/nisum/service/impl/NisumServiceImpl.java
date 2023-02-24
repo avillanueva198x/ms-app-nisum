@@ -42,7 +42,7 @@ public class NisumServiceImpl implements NisumService {
 		try {
 			UsersEntity existe = usersRepository.findByEmail(userDto.getEmail());
 			if (existe != null) {
-				return new ResponseEntity<>(new GenericErrorResponse("Usuario ya registrado"), HttpStatus.BAD_REQUEST);
+				return new ResponseEntity<>(new GenericErrorResponse("El correo ya fue registrado"), HttpStatus.BAD_REQUEST);
 			}
 
 			BeanUtils.copyProperties(userDto, user);
