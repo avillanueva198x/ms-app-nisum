@@ -17,7 +17,7 @@
 
 # Consideraciones
 
-*	No necesita un script de base de datos, ya que se usando flyway de sprint para crear e insertar datos para validar el usuario y contraseña al momento de generar el token, esta configuración la pueden encontrar en la carpeta de recursos en la ruta: 
+*	Se esta usando la base de datos H2, No necesita un script de base de datos, ya que se usando flyway de sprint para crear e insertar datos cuando inicia el microservicio, estos datos se usan para validar el usuario y contraseña al momento de generar el token, esta configuración la pueden encontrar en la carpeta de recursos en la ruta: 
 
 	/resources/db/migration
 	
